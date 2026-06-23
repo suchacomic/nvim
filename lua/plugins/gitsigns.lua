@@ -30,7 +30,7 @@ return {
 					else
 						gitsigns.nav_hunk("next")
 					end
-				end, { expr = true, desc = "Next git [C]hange" })
+				end, { desc = "Next git [C]hange" })
 
 				map("n", "[c", function()
 					if vim.wo.diff then
