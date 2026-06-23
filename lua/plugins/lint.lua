@@ -10,10 +10,10 @@ return {
 				sh = { "shellcheck" },
 				bash = { "shellcheck" },
 				zsh = { "shellcheck" },
-				markdown = { "markdownlint", "vale", "proselint" },
-				text = { "vale", "proselint" },
-				tex = { "chktex", "proselint", "lacheck" },
-				json = { "jsonlint", "proselint" },
+				markdown = { "markdownlint", "vale" },
+				text = { "vale" },
+				tex = { "chktex", "vale", "lacheck" },
+				json = { "jsonlint" },
 			}
 
 			-- Manual keymap to force diagnostic validation on demand

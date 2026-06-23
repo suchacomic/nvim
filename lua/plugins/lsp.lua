@@ -140,6 +140,10 @@ return {
 				"shfmt", -- Shell formatting
 				"shellcheck", -- Shell script analysis
 				"jsonlint", -- JSON layout analysis
+				"marksman", -- Markdown.
+				"vale",
+				"markdownlint",
+				"prettier",
 			})
 
 			-- Hand over list to Mason to execute system downloads
