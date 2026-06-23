@@ -1,0 +1,34 @@
+return {
+	{ -- Linting
+		"mfussenegger/nvim-lint",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			local lint = require("lint")
+			-- Linters
+			lint.linters_by_ft = {
+				python = { "ruff" },
+				sh = { "shellcheck" },
+				bash = { "shellcheck" },
+				zsh = { "shellcheck" },
+				markdown = { "markdownlint", "vale", "proselint" },
+				text = { "vale", "proselint" },
+				tex = { "chktex", "proselint", "lacheck" },
+				json = { "jsonlint", "proselint" },
+			}
+
+			-- Manual keymap to force diagnostic validation on demand
+			vim.keymap.set("n", "<leader>ct", function()
+				lint.try_lint()
+			end, { desc = "[C]ode [T]rogger linting for current file" })
+
+			-- Automatic background validation trigger
+			local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+			vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+				group = lint_augroup,
+				callback = function()
+					lint.try_lint()
+				end,
+			})
+		end,
+	},
+}

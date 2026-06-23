@@ -1,0 +1,122 @@
+return {
+	{
+		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
+		opts = {
+			-- 1. Modern Startup Dashboard Configuration
+			dashboard = {
+				enabled = true,
+				preset = {
+					header = [[
+ ███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓ 
+ ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒ 
+▓██  ▀█ ██▒▒███   ▒██░  ██▒ ▓██  █▒░▒██▒▓██    ▓██░ 
+▓██▒  ▐▌██▒▒▓█  ▄ ▒██   ██░  ▒██ █░░░██░▒██    ▒██  
+▒██░   ▓██░░▒████▒░ ████▓▒░   ▒▀█░  ░██░▒██▒   ░██▒ 
+░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░▒░▒░    ░ ▐░  ░▓  ░ ▒░   ░  ░ 
+░ ░░   ░ ▒░ ░ ░  ░  ░ ▒ ▒░    ░ ░░   ▒ ░░  ░      ░ 
+   ░   ░ ░    ░   ░ ░ ░ ▒       ░░   ▒ ░░      ░    
+         ░    ░  ░    ░ ░        ░   ░         ░    
+                                ░                   
+                                                    
+]],
+					keys = {
+						{ icon = " ", key = "f", desc = "Find File", action = ":Telescope find_files" },
+						{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+						{ icon = " ", key = "r", desc = "Recent Files", action = ":Telescope oldfiles" },
+						{ icon = " ", key = "g", desc = "Find Text", action = ":Telescope live_grep" },
+						{
+							icon = " ",
+							key = "c",
+							desc = "Config",
+							action = function()
+								require("telescope.builtin").find_files({ cwd = "~/.config/nvim/" })
+							end,
+						},
+						{
+							icon = " ",
+							key = "s",
+							desc = "Restore Session",
+							action = ":lua require('persistence').load()",
+						},
+						{ icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
+						{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
+					},
+				},
+				sections = {
+					{ section = "header" },
+					{ section = "keys", gap = 1, padding = 1 },
+					{ section = "startup" },
+				},
+			},
+
+			-- 2. Terminal image rendering (Kitty Protocol)
+			image = {
+				enabled = true,
+				doc = { inline = true },
+			},
+
+			-- 3. Smart LSP-aware workspace renaming
+			rename = { enabled = true },
+
+			-- 4. Explorer replaces neo-tree
+			explorer = {
+				enabled = true,
+			},
+
+			-- 5. Indentation guided & Scope Tracking (replaces blankline-indent)
+			indent = {
+				enabled = true,
+				char = "│",
+				only_scope = false,
+				only_current = false,
+				animate = {
+					enabled = true,
+					style = "out",
+				},
+				scope = {
+					enabled = true,
+					char = "│",
+				},
+			},
+
+			-- 6. Buffer Deletion without closing split layout
+			bufdelete = { enabled = true },
+		},
+		keys = {
+			-- Map backslash to seamlessly toggle the new Snacks Explorer sidebar
+			{
+				"\\",
+				function()
+					Snacks.explorer()
+				end,
+				desc = "Toggle Explorer",
+			},
+			-- File rename utility
+			{
+				"<leader>rf",
+				function()
+					Snacks.rename.rename_file()
+				end,
+				desc = "Rename Current File",
+			},
+			-- Safe buffer delete mappings
+			{
+				"<leader>bd",
+				function()
+					Snacks.bufdelete()
+				end,
+				desc = "Delete Buffer",
+			},
+			-- Dashboard
+			{
+				"<leader>;",
+				function()
+					Snacks.dashboard.open()
+				end,
+				desc = "Open Dashboard",
+			},
+		},
+	},
+}
