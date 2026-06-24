@@ -24,8 +24,9 @@ return {
 		-- C-k: Toggle signature help (if signature.enabled = true)
 		--
 		-- See :h blink-cmp-config-keymap for defining your own keymap
-		keymap = { preset = "enter" },
-
+		keymap = {
+			preset = "enter",
+		},
 		appearance = {
 			-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 			-- Adjusts spacing to ensure icons are aligned
@@ -41,6 +42,7 @@ return {
 				border = "rounded",
 				draw = {
 					gap = 2,
+					padding = 2,
 				},
 				winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
 			},
@@ -48,6 +50,7 @@ return {
 				auto_show = true,
 				auto_show_delay_ms = 200,
 				window = {
+					min_width = 15,
 					border = "rounded",
 					winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
 				},
@@ -55,7 +58,14 @@ return {
 		},
 		signature = {
 			enabled = true,
-			window = { border = "rounded" },
+			window = {
+				min_width = 20,
+				max_width = 80,
+				max_height = 30,
+				border = "rounded",
+				show_documentation = true,
+				winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
+			},
 		},
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`

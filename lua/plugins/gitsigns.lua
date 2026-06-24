@@ -1,6 +1,6 @@
 return {
 	"lewis6991/gitsigns.nvim",
-	lazy = true,
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local gitsigns = require("gitsigns")
 
@@ -16,8 +16,6 @@ return {
 			-- Attaches automatically when a file tracked by git is opened and activates mappung
 
 			on_attach = function(bufnr)
-				local gitsigns = require("gitsigns")
-
 				local function map(mode, l, r, opts)
 					opts = opts or {}
 					opts.buffer = bufnr
@@ -38,7 +36,7 @@ return {
 					else
 						gitsigns.nav_hunk("prev")
 					end
-				end, { expr = true, desc = "Previous Git [C]hange" })
+				end, { desc = "Previous Git [C]hange" })
 
 				--ACTIONS: Stage, Reset and Preview edits inline
 				map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "[H]unk [S]tage" })
