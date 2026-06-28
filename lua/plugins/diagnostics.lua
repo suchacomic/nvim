@@ -62,10 +62,10 @@ return {
 						enabled = true,
 						if_many = true,
 					},
-					severity = {
-						vim.diagnostic.severity.ERROR,
-						vim.diagnostic.severity.WARN,
-					},
+					-- severity = {
+					-- 	vim.diagnostic.severity.ERROR,
+					-- 	vim.diagnostic.severity.WARN,
+					-- },
 					use_icons_from_diagnostic = true,
 				},
 			})

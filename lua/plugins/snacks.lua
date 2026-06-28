@@ -83,8 +83,16 @@ return {
 
 			-- 6. Buffer Deletion without closing split layout
 			bufdelete = { enabled = true },
+
+			-- 7. Terminal
+			terminal = {
+				win = {
+					style = "terminal",
+				},
+			},
 		},
 		keys = {
+			-- Stylua ignore
 			-- Map backslash to seamlessly toggle the new Snacks Explorer sidebar
 			{
 				"\\",
@@ -116,6 +124,59 @@ return {
 					Snacks.dashboard.open()
 				end,
 				desc = "Open Dashboard",
+			},
+			-- Terminal
+			{
+				"<leader>tt",
+				function()
+					Snacks.terminal.toggle(nil, {
+						win = { style = "bottom", border = "rounded" },
+					})
+				end,
+				desc = " Toggle Terminal",
+			},
+			{
+				"<leader>tf",
+				function()
+					Snacks.terminal.toggle(nil, {
+						win = { style = "float", border = "rounded" },
+					})
+				end,
+				desc = " Toggle Floating Terminal",
+			},
+			{ -- Quick code runner
+				"<leader>cx",
+				function()
+					local file = vim.api.nvim_buf_get_name(0)
+					local ft = vim.bo.filetype
+					local cmd = nil
+
+					if ft == "python" then
+						cmd = "python3 " .. vim.fm.shellescape(file)
+					elseif ft == "lua" then
+						cmd = "lua " .. vim.fm.shellescape(file)
+					elseif ft == "sh" then
+						cmd = "bash " .. vim.fn.shellescape(file)
+					elseif ft == "zsh" then
+						cmd = "zsh " .. vim.fm.shellescape(file)
+					elseif ft == "julia" then
+						cmd = "julia " .. vim.fm.shellescape(file)
+					end
+
+					if cmd then
+						Snacks.terminal.open(cmd, {
+							auto_close = false,
+							win = {
+								position = "bottom",
+								height = 0.4,
+								title = "Execution Output: " .. vim.fn.fnamemodify(file, ":t") .. " ",
+							},
+						})
+					else
+						Snacks.notify.warn("No runner defined for type: " .. ft)
+					end
+				end,
+				desc = "Execute Current file",
 			},
 		},
 	},

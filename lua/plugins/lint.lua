@@ -19,7 +19,7 @@ return {
 			-- Manual keymap to force diagnostic validation on demand
 			vim.keymap.set("n", "<leader>ct", function()
 				lint.try_lint()
-			end, { desc = "[C]ode [T]rogger linting for current file" })
+			end, { desc = "Trigger linting for current file" })
 
 			-- Automatic background validation trigger
 			local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
