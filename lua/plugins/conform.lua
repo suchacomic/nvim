@@ -33,6 +33,7 @@ return {
 				markdown = { "prettier" },
 				json = { "prettier" },
 				toml = { "taplo" },
+				python = { "black" },
 			},
 		},
 	},
