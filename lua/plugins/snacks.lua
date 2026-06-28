@@ -152,15 +152,15 @@ return {
 					local cmd = nil
 
 					if ft == "python" then
-						cmd = "python3 " .. vim.fm.shellescape(file)
+						cmd = "python3 " .. vim.fn.shellescape(file)
 					elseif ft == "lua" then
 						cmd = "lua " .. vim.fm.shellescape(file)
 					elseif ft == "sh" then
 						cmd = "bash " .. vim.fn.shellescape(file)
 					elseif ft == "zsh" then
-						cmd = "zsh " .. vim.fm.shellescape(file)
+						cmd = "zsh " .. vim.fn.shellescape(file)
 					elseif ft == "julia" then
-						cmd = "julia " .. vim.fm.shellescape(file)
+						cmd = "julia " .. vim.fn.shellescape(file)
 					end
 
 					if cmd then
