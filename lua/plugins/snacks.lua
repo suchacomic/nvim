@@ -154,7 +154,7 @@ return {
 					if ft == "python" then
 						cmd = "python3 " .. vim.fn.shellescape(file)
 					elseif ft == "lua" then
-						cmd = "lua " .. vim.fm.shellescape(file)
+						cmd = "lua " .. vim.fn.shellescape(file)
 					elseif ft == "sh" then
 						cmd = "bash " .. vim.fn.shellescape(file)
 					elseif ft == "zsh" then
@@ -168,7 +168,7 @@ return {
 							auto_close = false,
 							win = {
 								position = "bottom",
-								height = 0.4,
+								height = 0.25,
 								title = "Execution Output: " .. vim.fn.fnamemodify(file, ":t") .. " ",
 							},
 						})
