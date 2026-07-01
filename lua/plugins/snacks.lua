@@ -133,7 +133,7 @@ return {
 						win = { style = "bottom", border = "rounded" },
 					})
 				end,
-				desc = " Toggle Terminal",
+				desc = " Toggle Bottom Terminal",
 			},
 			{
 				"<leader>tf",

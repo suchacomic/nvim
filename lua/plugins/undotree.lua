@@ -4,7 +4,7 @@ return {
 
 		-- only load the plugin when you actually hit the keymap
 		keys = {
-			{ "<leader>u", vim.cmd.UndotreeToggle, desc = "Toggle [U]ndo Tree" },
+			{ "<leader>tu", vim.cmd.UndotreeToggle, desc = "Undo Tree" },
 		},
 	},
 }

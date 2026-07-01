@@ -28,7 +28,7 @@ return {
 					else
 						gitsigns.nav_hunk("next")
 					end
-				end, { desc = "Next git [C]hange" })
+				end, { desc = "Next git Change" })
 
 				map("n", "[c", function()
 					if vim.wo.diff then
@@ -36,12 +36,14 @@ return {
 					else
 						gitsigns.nav_hunk("prev")
 					end
-				end, { desc = "Previous Git [C]hange" })
+				end, { desc = "Previous Git Change" })
 
 				--ACTIONS: Stage, Reset and Preview edits inline
-				map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "[H]unk [S]tage" })
-				map("n", "<leader>hr", gitsigns.reset_hunk, { desc = "[H]unk [R]eset" })
-				map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "[H]unk [P]review inline" })
+				map("n", "<leader>g", "", { desc = "+Git" })
+				map("n", "<leader>gh", "", { desc = "+Hunk" })
+				map("n", "<leader>ghs", gitsigns.stage_hunk, { desc = "[H]unk [S]tage" })
+				map("n", "<leader>ghr", gitsigns.reset_hunk, { desc = "[H]unk [R]eset" })
+				map("n", "<leader>ghp", gitsigns.preview_hunk, { desc = "[H]unk [P]review inline" })
 
 				-- Diff
 				map("n", "<leader>hd", gitsigns.diffthis, { desc = "[H]unk [D]iff against index" })
